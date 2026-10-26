@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-rbac>
+
+    <users>
+
+        <!-- ========================= -->
+        <!-- DEV1 USER                  -->
+        <!-- ========================= -->
+
+        <user>
+            <name>dev1-user</name>
+
+            <password>WEt5MDZQQlUxU3RQMHhXRjFLNm8xdVNzRkp3b0hFUnY=:100:iyx/pn3x/+R2CZFIFxEls7XzImbQFOWQ+/6Nk3G8vpioxWbPuSlABBiCl6Xh/Oxw/x6h3v7YRsmPrjdzU2q3Tg==</password>
+
+            <roles>
+                <id>dev-role</id>
+            </roles>
+        </user>
+
+
+        <!-- ========================= -->
+        <!-- DEV2 USER                  -->
+        <!-- ========================= -->
+
+        <user>
+            <name>dev2-user</name>
+
+            <password>MEh6dWF0MEtzVjA5VHM2TzNXYmNDT0s1V2FCVjhXQkg=:100:nk04cQgQPb6iIRhgwhX/nVuNy/iuFJcbwzizjhT5pR5O4jRIFvWraKUNLZLJpzu2L2BWjbEAk4MX9jko1BaMfQ==</password>
+
+            <roles>
+                <id>dev-role</id>
+            </roles>
+        </user>
+
+
+        <!-- ========================= -->
+        <!-- ADMIN USER                 -->
+        <!-- ========================= -->
+
+        <user>
+            <name>admin-user</name>
+
+            <password>Vjc1a0lxQ3Nvb0ljNFVHNE9WRnM3RG1IZmdNUFcwVGY=:100:PL2FLqfpdhONG7qXjAMmdVn4wlMiXnypdXiFW09zqorFhKgoiixFQw2EVJJfE9Zn79q45V7Xpc6JeKLp0ntmYA==</password>
+
+            <roles>
+                <id>superuser</id>
+            </roles>
+        </user>
+
+
+        <!-- ========================= -->
+        <!-- DCIM USER                  -->
+        <!-- ========================= -->
+
+        <user>
+            <name>dcimUser</name>
+
+            <password>UGppNk03WGhEUm1HUFBvRjhmM3Qyak9acGZxajRjMlQ=:100:CVhUAfY7r5pHRzTSdw0fby4aswAk06zO62TuI5XmYay6zmEaIz4UhcZns28oxvbuWyVgpLxDVhrYFrndgjrIMw==</password>
+
+            <roles>
+                <id>production-data</id>
+            </roles>
+        </user>
+
+    </users>
+
+
+    <!-- ========================= -->
+    <!-- ROLES                     -->
+    <!-- ========================= -->
+
+    <roles>
+
+        <!-- ========================================= -->
+        <!-- DEV ROLE                                 -->
+        <!-- dev1-user and dev2-user both use this    -->
+        <!-- ========================================= -->
+
+        <role>
+
+            <id>dev-role</id>
+
+            <permissions>
+
+                <!-- Sparkplug:
+                     Allows MQTT Engine to subscribe
+                     and Transmission/Backend to publish -->
+
+                <permission>
+                    <topic>spBv1.0/#</topic>
+                    <activity>ALL</activity>
+                </permission>
+
+            </permissions>
+
+        </role>
+
+
+        <!-- ========================= -->
+        <!-- SUPERUSER                  -->
+        <!-- ========================= -->
+
+        <role>
+
+            <id>superuser</id>
+
+            <permissions>
+
+                <permission>
+                    <topic>#</topic>
+                    <activity>ALL</activity>
+                </permission>
+
+            </permissions>
+
+        </role>
+
+
+        <!-- ========================= -->
+        <!-- DCIM / PRODUCTION DATA    -->
+        <!-- ========================= -->
+
+        <role>
+
+            <id>production-data</id>
+
+            <permissions>
+
+                <permission>
+                    <topic>another/test/#</topic>
+                    <activity>SUBSCRIBE</activity>
+                </permission>
+
+            </permissions>
+
+        </role>
+
+    </roles>
+
+</file-rbac>
