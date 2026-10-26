@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<file-rbac>
+
+    <users>
+
+        <!-- ========================= -->
+        <!-- BACKEND / SCADA USER       -->
+        <!-- ========================= -->
+
+        <user>
+
+            <name>user1</name>
+
+            <!-- password: pass1 -->
+
+            <password>WFNQUVB0UkxjM04xa0hSR1BQNGhuOTJKVzdlbXA4bjk=:100:FY12nwpUEbBK9EKQ/Aw/rQKSoA7jXsC0HKELwU2mLCVU39bJVK0zf4NemuFeDOHPO4BW1nOjxi6NporkC6rUog==</password>
+
+            <roles>
+                <id>role1</id>
+            </roles>
+
+        </user>
+
+
+        <!-- ========================= -->
+        <!-- ADMIN USER                 -->
+        <!-- ========================= -->
+
+        <user>
+
+            <name>admin-user</name>
+
+            <!-- password: admin-password -->
+
+            <password>Vjc1a0lxQ3Nvb0ljNFVHNE9WRnM3RG1IZmdNUFcwVGY=:100:PL2FLqfpdhONG7qXjAMmdVn4wlMiXnypdXiFW09zqorFhKgoiixFQw2EVJJfE9Zn79q45V7Xpc6JeKLp0ntmYA==</password>
+
+            <roles>
+                <id>superuser</id>
+            </roles>
+
+        </user>
+
+    </users>
+
+
+    <!-- ========================= -->
+    <!-- ROLES                     -->
+    <!-- ========================= -->
+
+    <roles>
+
+
+        <!-- ========================= -->
+        <!-- ROLE 1                    -->
+        <!-- ========================= -->
+
+        <role>
+
+            <id>role1</id>
+
+            <permissions>
+
+
+                <!-- ========================================= -->
+                <!-- CLIENT-SPECIFIC DATA                       -->
+                <!-- ========================================= -->
+
+                <permission>
+
+                    <topic>data/${{clientid}}/#</topic>
+
+                </permission>
+
+
+                <!-- ========================================= -->
+                <!-- RETAINED PUBLISH                          -->
+                <!-- ========================================= -->
+
+                <permission>
+
+                    <topic>outgoing/${{clientid}}</topic>
+
+                    <activity>PUBLISH</activity>
+
+                    <retain>RETAINED</retain>
+
+                </permission>
+
+
+                <!-- ========================================= -->
+                <!-- USERNAME-SPECIFIC SUBSCRIPTION             -->
+                <!-- ========================================= -->
+
+                <permission>
+
+                    <topic>incoming/${{username}}/actions</topic>
+
+                    <activity>SUBSCRIBE</activity>
+
+                </permission>
+
+
+                <!-- ========================================= -->
+                <!-- SPARKPLUG PUBLISH                          -->
+                <!-- ========================================= -->
+
+                <permission>
+
+                    <topic>spBv1.0/Meta/#</topic>
+
+                    <activity>PUBLISH</activity>
+
+                </permission>
+
+
+                <!-- ========================================= -->
+                <!-- SPARKPLUG SUBSCRIBE                        -->
+                <!-- ========================================= -->
+
+                <permission>
+
+                    <topic>spBv1.0/#</topic>
+
+                    <activity>SUBSCRIBE</activity>
+
+                </permission>
+
+
+                <!-- ========================================= -->
+                <!-- SPARKPLUG NCMD                              -->
+                <!-- ========================================= -->
+
+                <permission>
+
+                    <topic>spBv1.0/Meta/NCMD/Backend</topic>
+
+                    <activity>SUBSCRIBE</activity>
+
+                </permission>
+
+
+                <!-- ========================================= -->
+                <!-- SPARKPLUG DCMD                              -->
+                <!-- ========================================= -->
+
+                <permission>
+
+                    <topic>spBv1.0/Meta/DCMD/Backend/#</topic>
+
+                    <activity>SUBSCRIBE</activity>
+
+                </permission>
+
+
+            </permissions>
+
+        </role>
+
+
+        <!-- ========================= -->
+        <!-- SUPERUSER                  -->
+        <!-- ========================= -->
+
+        <role>
+
+            <id>superuser</id>
+
+            <permissions>
+
+                <permission>
+
+                    <topic>#</topic>
+
+                    <activity>ALL</activity>
+
+                </permission>
+
+            </permissions>
+
+        </role>
+
+    </roles>
+
+</file-rbac>
